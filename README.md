@@ -1,55 +1,72 @@
 # rpi-yocto-build
 
+this is a yocto build to make a minimal image to use your raspberrypi with taplist.io.
+This is also a good start for me to learn yocto.
+
 ## Installing the tools
+
+You will need the following packages
+
+* List packages here
 
 ## Setting up the build
 
-Create project folder
+Clone the project to your home directory ~
 
 `
 
-mkdir -p ~/rpi/sources
+cd ~
 
-cd ~/rpi/sources
-`
-
-Clone required repos
+git clone https://github.com/Rotule666/rpi-taplist.git
 
 `
 
-git clone -b zeus git://git.yoctoproject.org/poky
-
-git clone -b zeus git://git.openembedded.org/meta-openembedded
-
-git clone -b zeus git://git.yoctoproject.org/meta-raspberrypi
-
-git clone git@github.com:Rotule666/meta-rpi-basic.git
-`
-
-init poky env
+### submodules
+The project will include the required submodules (this is provided for information, no need to execute the following lines)
 
 `
 
-cd ~/rpi
+cd ~/rpi-taplist/sources
+
+sudo git submodule add -b zeus git://git.yoctoproject.org/poky
+
+sudo git submodule add -b zeus git://git.openembedded.org/meta-openembedded
+
+sudo git submodule add -b zeus git://git.yoctoproject.org/meta-raspberrypi
+
+sudo git submodule add -b zeus git://git.openembedded.org/openembedded-core
+
+sudo git submodule add https://github.com/OSSystems/meta-browser.git
+
+sudo git submodule add git://github.com/kraj/meta-clang
+
+`
+### Build the image
+to init poky build env
+
+`
+
+cd ~/rpi-taplist
 
 source sources/poky/oe-init-build-env rpi-build
-`
-
-Copy example config
 
 `
 
-cp ~/rpi/sources/meta-rpi-basic/example-config/bblayers.conf conf/bblayers.conf
-
-cp ~/rpi/sources/meta-rpi-basic/example-config/local.conf conf/local.conf
-`
-
-bitbake
+to build the image
 
 `
+bitbake core-image-base
+#bitbake core-image-taplist
 
-bitbake rpi-basic-image
 `
+
+### Image location
+Once built, the image will be in
+~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2/
+
+### Flash the image using bmaptool
+bmaptool copy image.sdimg /dev/sdd
+
 
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
