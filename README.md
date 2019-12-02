@@ -7,56 +7,53 @@ This is also a good start for me to learn yocto.
 
 You will need the following packages
 
-* List packages here
+* build-essential
+* chrpath
+* diffstat
+* gawk
+* libncurses5-dev
+* texinfo
 
 ## Setting up the build
 
 Clone the project to your home directory ~
 
-`
+`cd ~`
 
-cd ~
-
-git clone https://github.com/Rotule666/rpi-taplist.git
-
-`
+`git clone https://github.com/Rotule666/rpi-taplist.git`
 
 ### submodules
 The project will include the required submodules (this is provided for information, no need to execute the following lines)
 
-`
+`cd ~/rpi-taplist/sources`
 
-cd ~/rpi-taplist/sources
+`sudo git submodule add -b zeus git://git.yoctoproject.org/poky`
 
-sudo git submodule add -b zeus git://git.yoctoproject.org/poky
+`sudo git submodule add -b zeus git://git.openembedded.org/meta-openembedded`
 
-sudo git submodule add -b zeus git://git.openembedded.org/meta-openembedded
+`sudo git submodule add -b zeus git://git.yoctoproject.org/meta-raspberrypi`
 
-sudo git submodule add -b zeus git://git.yoctoproject.org/meta-raspberrypi
+`sudo git submodule add -b zeus git://git.openembedded.org/openembedded-core`
 
-sudo git submodule add -b zeus git://git.openembedded.org/openembedded-core
+`sudo git submodule add https://github.com/OSSystems/meta-browser.git`
 
-sudo git submodule add https://github.com/OSSystems/meta-browser.git
+`sudo git submodule add git://github.com/kraj/meta-clang`
 
-sudo git submodule add git://github.com/kraj/meta-clang
 
-`
 ### Build the image
 to init poky build env
 
-`
+`cd ~/rpi-taplist`
 
-cd ~/rpi-taplist
+`source sources/poky/oe-init-build-env rpi-build`
 
-source sources/poky/oe-init-build-env rpi-build
-
-`
 
 to build the image
 
-`
-bitbake core-image-base
-#bitbake core-image-taplist
+
+`bitbake core-image-base`
+
+`#bitbake core-image-taplist`
 
 `
 
@@ -65,8 +62,14 @@ Once built, the image will be in
 ~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2/
 
 ### Flash the image using bmaptool
-bmaptool copy image.sdimg /dev/sdd
 
+Make sure to check which disk to write to, I use
+
+`lsblk`
+
+use bmaptool
+
+`bmaptool copy image.sdimg /dev/sdd`
 
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
