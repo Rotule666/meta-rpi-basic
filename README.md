@@ -50,10 +50,7 @@ to init poky build env
 
 to build the image
 
-
-`bitbake core-image-base`
-
-`#bitbake core-image-taplist`
+`bitbake image-taplist`
 
 
 ### Image location
@@ -70,7 +67,7 @@ use bmaptool, Make sure to change the right device here
 
 `cd ~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2`
 
-`sudo bmaptool copy core-image-base-raspberrypi2.rpi-sdimg /dev/sdc`
+`sudo bmaptool copy image-taplist-raspberrypi2.rpi-sdimg /dev/sdc`
 
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
