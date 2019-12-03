@@ -55,7 +55,6 @@ to build the image
 
 `#bitbake core-image-taplist`
 
-`
 
 ### Image location
 Once built, the image will be in
@@ -67,9 +66,11 @@ Make sure to check which disk to write to, I use
 
 `lsblk`
 
-use bmaptool
+use bmaptool, Make sure to change the right device here
 
-`bmaptool copy image.sdimg /dev/sdd`
+`cd ~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2`
+
+`sudo bmaptool copy core-image-base-raspberrypi2.rpi-sdimg /dev/sdc`
 
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
