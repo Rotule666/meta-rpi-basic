@@ -78,3 +78,5 @@ https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto
 https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html
 
 https://www.instructables.com/id/Building-GNULinux-Distribution-for-Raspberry-Pi-Us/
+
+https://blog.emumba.com/how-to-write-a-custom-yocto-application-layer-for-raspberrypi-bcd03f06ed68
