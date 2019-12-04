@@ -11,14 +11,15 @@ INHERIT += "extrausers"
 EXTRA_USERS_PARAMS = "usermod -P taplist root; "
 
 # Include modules in rootfs
-#IMAGE_INSTALL += " \
-#	kernel-modules \
-#	"
+IMAGE_INSTALL += " \
+	chromium-x11 \
+    mini-x-session \
+	"
 
 #SPLASH = "psplash-raspberrypi"
 
 #IMAGE_FEATURES += "ssh-server-dropbear splash"
 
-IMAGE_FEATURES += "ssh-server-dropbear"
+IMAGE_FEATURES += "ssh-server-dropbear x11-base"
 
 export IMAGE_BASENAME = "image-taplist"

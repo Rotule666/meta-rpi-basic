@@ -52,6 +52,7 @@ to build the image
 
 `bitbake image-taplist`
 
+go make the grocery, it takes forever.
 
 ### Image location
 Once built, the image will be in
@@ -88,3 +89,5 @@ https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html
 https://www.instructables.com/id/Building-GNULinux-Distribution-for-Raspberry-Pi-Us/
 
 https://blog.emumba.com/how-to-write-a-custom-yocto-application-layer-for-raspberrypi-bcd03f06ed68
+
+https://www.foobarflies.io/starting-with-yocto/
