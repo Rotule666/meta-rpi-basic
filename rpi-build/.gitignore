@@ -1,6 +1,6 @@
-/cache
-/downloads
-/sstate-cache
-/tmp
+/cache/*
+/downloads/*
+/sstate-cache/*
+/tmp/*
 bitbake*
 /conf/sanity_info
