@@ -6,6 +6,9 @@ include recipes-core/images/core-image-base.bb
 
 COMPATIBLE_MACHINE = "^rpi$"
 
+# Change root password to taplist
+INHERIT += "extrausers"
+EXTRA_USERS_PARAMS = "usermod -P taplist root; "
 
 # Include modules in rootfs
 #IMAGE_INSTALL += " \
