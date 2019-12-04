@@ -69,6 +69,17 @@ use bmaptool, Make sure to change the right device here
 
 `sudo bmaptool copy image-taplist-raspberrypi2.rpi-sdimg /dev/sdc`
 
+## tips
+
+### SSH
+
+to ssh to your new builded yocto system, use
+
+`ssh root@taplist.local`
+
+use the password set in image-taplist.bb (default from the repo is taplist)
+
+
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
 
