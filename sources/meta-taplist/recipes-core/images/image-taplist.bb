@@ -6,21 +6,21 @@ include recipes-core/images/core-image-base.bb
 
 COMPATIBLE_MACHINE = "^rpi$"
 
-# Change root password to taplist
-INHERIT += "extrausers"
-
 # Set root password to taplist
 # Add a user taplist//taplist
-EXTRA_USERS_PARAMS = "	usermod -P taplist root; \
-						useradd taplist; \
-						usermod  -p 'taplist' taplist; \
-						usermod  -a -G sudo taplist; \
+inherit extrausers
+EXTRA_USERS_PARAMS = "	useradd taplist; \
+						usermod -P taplist root; \
+						usermod -P taplist taplist; \
+						usermod -a -G sudo taplist; \
 						"
 
 # Include modules in rootfs
 IMAGE_INSTALL += " \
 	chromium-x11 \
     mini-x-session \
+	nano \
+	htop \
 	"
 
 #SPLASH = "psplash-raspberrypi"
