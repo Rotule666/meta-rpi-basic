@@ -18,7 +18,7 @@ EXTRA_USERS_PARAMS = "	useradd taplist; \
 # Include modules in rootfs
 IMAGE_INSTALL += " \
 	chromium-x11 \
-    mini-x-session \
+    matchbox-session \
 	nano \
 	htop \
 	"
