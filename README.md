@@ -27,26 +27,19 @@ The project will include the required submodules (this is provided for informati
 
 `cd ~/rpi-taplist/sources`
 
-`sudo git submodule add -b zeus git://git.yoctoproject.org/poky`
+`git submodule init`
 
-`sudo git submodule add -b zeus git://git.openembedded.org/meta-openembedded`
-
-`sudo git submodule add -b zeus git://git.yoctoproject.org/meta-raspberrypi`
-
-`sudo git submodule add -b zeus git://git.openembedded.org/openembedded-core`
-
-`sudo git submodule add https://github.com/OSSystems/meta-browser.git`
-
-`sudo git submodule add git://github.com/kraj/meta-clang`
-
+`git submodule update`
 
 ### Build the image
+
+Chose your device in rpi-build/conf/local.conf
+
 to init poky build env
 
 `cd ~/rpi-taplist`
 
 `source sources/poky/oe-init-build-env rpi-build`
-
 
 to build the image
 
@@ -59,6 +52,12 @@ Once built, the image will be in
 ~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2/
 
 ### Flash the image using bmaptool
+
+If you are using wsl, you need to mount the drive, for this use powershell
+
+`wmic diskdrive list brief`
+
+`wsl --mount <DiskPath> --bare`
 
 Make sure to check which disk to write to, I use
 
