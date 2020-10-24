@@ -21,4 +21,4 @@ xset s noblank   > /dev/null 2>&1   # don't blank the video device
 exec matchbox-window-manager -use_titlebar no -use_cursor no &
 
 # Now, run chromium 'as' your user
-exec /usr/bin/chromium --no-sandbox --user-data-dir=/tmp --disable-session-crashed-bubble --disable-infobars --noerrdialogs --disable-restore-background-contents --disable-translate --disable-new-tab-first-run app=https://www.taplist.io/display
+exec chromium --no-sandbox --user-data-dir=/tmp --disable-session-crashed-bubble --disable-infobars --noerrdialogs --disable-restore-background-contents --disable-translate --disable-new-tab-first-run --fast --fast-start --app=https://www.taplist.io/display
