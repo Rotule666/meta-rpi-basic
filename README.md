@@ -7,6 +7,10 @@ it basically simply start chromium in kiosk mode and go to taplist.io
 
 you can see the way we start chromium in /usr/bin/matchbox-session
 
+If you want to just use this image, use the release binaries (rpi-sdimg) for your device and burn it to your sd card using balena etcher.
+
+to setup your wifi, simply make a wpa_supplicant file
+
 ## Installing the tools
 
 You will need the following packages
