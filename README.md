@@ -1,55 +1,92 @@
 # rpi-yocto-build
 
+this is a yocto build to make a minimal image to use your raspberrypi with taplist.io.
+This is also a good start for me to learn yocto.
+
+it basically simply start chromium in kiosk mode and go to taplist.io
+
+you can see the way we start chromium in /usr/bin/matchbox-session
+
+If you want to just use this image, use the release binaries (rpi-sdimg) for your device and burn it to your sd card using balena etcher.
+
+to setup your wifi, simply make a wpa_supplicant file
+
 ## Installing the tools
+
+You will need the following packages
+
+* build-essential
+* chrpath
+* diffstat
+* gawk
+* libncurses5-dev
+* texinfo
 
 ## Setting up the build
 
-Create project folder
+Clone the project to your home directory ~
 
-`
+`cd ~`
 
-mkdir -p ~/rpi/sources
+`git clone https://github.com/Rotule666/rpi-taplist.git`
 
-cd ~/rpi/sources
-`
+### submodules
+The project will include the required submodules (this is provided for information, no need to execute the following lines)
 
-Clone required repos
+`cd ~/rpi-taplist/sources`
 
-`
+`git submodule init`
 
-git clone -b zeus git://git.yoctoproject.org/poky
+`git submodule update`
 
-git clone -b zeus git://git.openembedded.org/meta-openembedded
+### Build the image
 
-git clone -b zeus git://git.yoctoproject.org/meta-raspberrypi
+Chose your device in rpi-build/conf/local.conf
 
-git clone git@github.com:Rotule666/meta-rpi-basic.git
-`
+to init poky build env
 
-init poky env
+`cd ~/rpi-taplist`
 
-`
+`source sources/poky/oe-init-build-env rpi-build`
 
-cd ~/rpi
+to build the image
 
-source sources/poky/oe-init-build-env rpi-build
-`
+`bitbake image-taplist`
 
-Copy example config
+go make the grocery, it takes forever.
 
-`
+### Image location
+Once built, the image will be in
+~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2/
 
-cp ~/rpi/sources/meta-rpi-basic/example-config/bblayers.conf conf/bblayers.conf
+### Flash the image using bmaptool
 
-cp ~/rpi/sources/meta-rpi-basic/example-config/local.conf conf/local.conf
-`
+If you are using wsl, you need to mount the drive, for this use powershell
 
-bitbake
+`wmic diskdrive list brief`
 
-`
+`wsl --mount <DiskPath> --bare`
 
-bitbake rpi-basic-image
-`
+Make sure to check which disk to write to, I use
+
+`lsblk`
+
+use bmaptool, Make sure to change the right device here
+
+`cd ~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2`
+
+`sudo bmaptool copy image-taplist-raspberrypi2.rpi-sdimg /dev/sdc`
+
+## tips
+
+### SSH
+
+to ssh to your new builded yocto system, use
+
+`ssh root@taplist.local`
+
+use the password set in image-taplist.bb (default from the repo is taplist)
+
 
 ## References
 https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto-for-raspberry-pi-zero
@@ -57,3 +94,7 @@ https://hackaday.io/project/152729-8bitrobots-module/log/145981-setting-up-yocto
 https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html
 
 https://www.instructables.com/id/Building-GNULinux-Distribution-for-Raspberry-Pi-Us/
+
+https://blog.emumba.com/how-to-write-a-custom-yocto-application-layer-for-raspberrypi-bcd03f06ed68
+
+https://www.foobarflies.io/starting-with-yocto/
