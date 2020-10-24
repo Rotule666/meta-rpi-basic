@@ -3,6 +3,10 @@
 this is a yocto build to make a minimal image to use your raspberrypi with taplist.io.
 This is also a good start for me to learn yocto.
 
+it basically simply start chromium in kiosk mode and go to taplist.io
+
+you can see the way we start chromium in /usr/bin/matchbox-session
+
 ## Installing the tools
 
 You will need the following packages
