@@ -21,11 +21,12 @@ IMAGE_INSTALL += " \
     matchbox-session \
 	nano \
 	htop \
+	ntp \
 	"
 
-#SPLASH = "psplash-raspberrypi"
+SPLASH = "psplash-raspberrypi"
 
 #IMAGE_FEATURES += "ssh-server-dropbear x11-base splash"
-IMAGE_FEATURES += "ssh-server-dropbear x11-base"
+IMAGE_FEATURES += "ssh-server-dropbear x11-base splash"
 
 export IMAGE_BASENAME = "image-taplist"
