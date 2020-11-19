@@ -47,7 +47,7 @@ to init poky build env
 
 `cd ~/rpi-taplist`
 
-`source sources/poky/oe-init-build-env rpi-build`
+`source sources/poky/oe-init-build-env`
 
 to build the image
 
@@ -57,7 +57,7 @@ go make the grocery, it takes forever.
 
 ### Image location
 Once built, the image will be in
-~/rpi-taplist/rpi-build/tmp/deploy/images/raspberrypi2/
+~/rpi-taplist/build/tmp/deploy/images/raspberrypi2/
 
 ### Flash the image using bmaptool
 
